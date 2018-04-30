@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html ng-app="myApp">
+<head>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+	<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+	<title>Food Panda</title>
+	<style type="text/css">
+	#nav {
+    border-radius: 5px;
+    background-color: black;	
+	}
+	</style>
+</head>
+<body style="background-image:url('22.jpg');height:100%; background-repeat:no-repeat;background-position: center;background-size: cover">
+	<div id="nav">
+        <nav class="navbar navbar-inverse navbar-fixed-top" >
+          <div class="container-fluid">
+            <div class="navbar-header">
+              <a class="navbar-brand" href="index.html">
+                  <span style = "color:white"><span style = "color:red">Food</span>Panda</span>
+              </a>
+            </div>
+          </div>
+        </nav>
+    </div>
+    <br>
+    <!--ng-controller is used to refer the defintion of the functions present-->
+	<div class="container" ng-controller="AppCtrl">
+		<div class="col-xs-12 text-center" style="padding:60px;">
+                      <h1 class="header-h" style="color: white">Aren't you Hungry ??<span class="glyphicon glyphicon-cutlery"></span></h1>
+                      <p class="header-p" style="font-family:comic sans ms;font-size:25px;color: white">Welcome to Food Panda, get food in minutes..</p>
+        </div>
+		<div class="container" style = "padding-right:350px;padding-left:100px;color:white">
+					Order Name:<input class="form-control" ng-model="order.name">
+					Email:<input class="form-control" ng-model="order.email">
+					Phone Number:<input class="form-control" ng-model="order.number"><br>
+					<button class="btn btn-primary" ng-click="place()">Place Order</button>&nbsp;&nbsp;
+					<button class="btn btn-info" ng-click="update()" >Update</button>&nbsp;&nbsp;&nbsp;<button class="btn btn-info" ng-click="deselect()">Clear Details</button>
+		</div>
+					
+				<div class="col-xs-12 text-center" style="padding:60px;">
+                      <h2 class="header-h" style="color: white">Your Orders</h2>
+        		</div>
+        	<div class = "container" style = "color: white">
+		        <table class = "table">
+		            <thead >
+		            <th>Order Name</th>
+		            <th>Email</th>
+		            <th>Phone</th>
+		            <th></th>
+					<th>&nbsp;</th>
+		            </thead>
+		            <tbody >
+		            <tr ng-repeat="order in orders">
+					<td>{{order.name}}</td>
+					<td>{{order.email}}</td>
+					<td>{{order.number}}</td>
+					<td><button class="btn btn-danger" ng-click="cancel(order._id)">Cancel Order</button></td>
+					<td><button class="btn btn-warning" ng-click="edit(order._id)">Edit Order</button></td>
+					</tr>
+				</tbody>
+		    	</table>
+    		</div>
+	</div>
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+    <script src="controllers/controller.js"></script>
+</body>
+</html>
